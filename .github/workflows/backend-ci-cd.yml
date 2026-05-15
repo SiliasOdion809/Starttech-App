@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/full-stack
+      - main
     paths:
       - 'backend/**'
 
