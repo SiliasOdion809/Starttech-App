@@ -83,4 +83,5 @@ jobs:
               --name backend \
               --restart always \
               -p 8080:8080 \
+              -e VAR_NAME=value \
               ${{ secrets.ECR_REPOSITORY }}:latest
