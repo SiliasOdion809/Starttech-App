@@ -39,7 +39,7 @@ jobs:
           docker buildx build \
             --platform linux/amd64 \
             -t ${{ secrets.ECR_REPOSITORY }}:latest \
-            --push \
+            --push=true \
             .
 
       - name: Deploy to EC2 Server 1
