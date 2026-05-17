@@ -38,8 +38,9 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64 \
-            -t ${{ secrets.ECR_REPOSITORY }}:latest \
-            --push .
+            --tag ${{ secrets.ECR_REPOSITORY }}:latest \
+            --push \
+            .
 
       - name: Deploy to EC2 Server 1
         uses: appleboy/ssh-action@master
