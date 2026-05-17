@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             ECR_URL="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com"
-            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_URL
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} docker login --username AWS --password-stdin $ECR_URL
             docker pull ${{ secrets.ECR_REPOSITORY }}:latest
             docker stop backend || true
             docker rm backend || true
