@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/ubuntu/Starttech-App
-            .scripts/deploy-backend.sh
+            ./scripts/deploy-backend.sh
 
       #################################################
       # DEPLOY TO EC2 SERVER 2
