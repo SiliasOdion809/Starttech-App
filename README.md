@@ -1,3 +1,5 @@
+# README.md
+
 # StartTech Full Stack DevOps Project
 
 ## Project Overview
@@ -72,8 +74,13 @@ Dockerized Golang Backend
 MongoDB Atlas
    ↓
 Redis ElastiCache
+```
 
-## Repository Structure
+---
+
+# Repository Structure
+
+```text
 starttech-application/
 ├── .github/
 │   └── workflows/
@@ -94,9 +101,13 @@ starttech-application/
 ├── README.md
 ├── ARCHITECTURE.md
 └── RUNBOOK.md
+```
 
-## CI/CD Pipeline Overview**
-###Frontend Pipeline
+---
+
+# CI/CD Pipeline Overview
+
+## Frontend Pipeline
 
 The frontend pipeline performs:
 
@@ -107,7 +118,9 @@ The frontend pipeline performs:
 5. Deployment to Amazon S3
 6. CloudFront cache invalidation
 
-###Backend Pipeline
+---
+
+## Backend Pipeline
 
 The backend pipeline performs:
 
@@ -119,91 +132,156 @@ The backend pipeline performs:
 6. Health endpoint verification
 7. CloudWatch log integration
 
-## Environment Variables
-Backend Environment Variables
+---
+
+# Environment Variables
+
+## Backend Environment Variables
+
+```env
 PORT=8080
 MONGO_URI=<mongodb-atlas-uri>
 DB_NAME=much_todo_db
 JWT_SECRET_KEY=<jwt-secret>
 REDIS_HOST=<redis-endpoint>
 REDIS_PORT=6379
+```
 
-## Deployment Process
-### Frontend Deployment
+---
+
+# Deployment Process
+
+## Frontend Deployment
+
+```bash
 bash scripts/deploy-frontend.sh
+```
 
-### Backend Deployment
+---
+
+## Backend Deployment
+
+```bash
 bash scripts/deploy-backend.sh
+```
 
-##. Health Checks
+---
+
+# Health Checks
 
 Backend health endpoint:
 
+```text
 /health
+```
 
 Example:
 
+```bash
 curl http://localhost:8080/health
+```
 
 Expected Response:
 
+```json
 {
   "cache":"disabled",
   "database":"ok"
 }
-``
-## Monitoring
+```
+
+---
+
+# Monitoring
 
 Monitoring is implemented using:
 
-Amazon CloudWatch Logs
-CloudWatch Log Groups
-Docker container logs
-Application health checks
+- Amazon CloudWatch Logs
+- CloudWatch Log Groups
+- Docker container logs
+- Application health checks
 
-## Security Implementation
+---
+
+# Security Implementation
 
 Security practices implemented:
 
-IAM least-privilege access
-GitHub Secrets management
-Docker image vulnerability scanning
-Private Amazon ECR repositories
-Security Groups for network access control
-MongoDB Atlas authentication
-SSH key-based EC2 access
+- IAM least-privilege access
+- GitHub Secrets management
+- Docker image vulnerability scanning
+- Private Amazon ECR repositories
+- Security Groups for network access control
+- MongoDB Atlas authentication
+- SSH key-based EC2 access
 
-## Setup Instructions
-### Clone Repository
+---
+
+# Setup Instructions
+
+## Clone Repository
+
+```bash
 git clone <repository-url>
+```
 
-### Install Frontend Dependencies
+---
+
+## Install Frontend Dependencies
+
+```bash
 cd frontend
 npm install
+```
 
-### Run Frontend Locally
+---
+
+## Run Frontend Locally
+
+```bash
 npm start
-### Run Backend Locally
+```
+
+---
+
+## Run Backend Locally
+
+```bash
 cd backend/MuchToDo
 go mod tidy
 go run ./cmd/api
+```
 
-## Docker Commands
-### Build Backend Image
+---
+
+# Docker Commands
+
+## Build Backend Image
+
+```bash
 docker build -t starttech-backend .
+```
 
-### Run Backend Container
+## Run Backend Container
+
+```bash
 docker run -d -p 8080:8080 starttech-backend
+```
 
-## Future Improvements
-HTTPS with Let's Encrypt
-Blue/Green Deployments
-ECS or Kubernetes Migration
-Prometheus & Grafana Monitoring
-Automated Rollbacks
-Zero-Downtime Deployments
+---
 
-## Author
+# Future Improvements
+
+- HTTPS with Let's Encrypt
+- Blue/Green Deployments
+- ECS or Kubernetes Migration
+- Prometheus & Grafana Monitoring
+- Automated Rollbacks
+- Zero-Downtime Deployments
+
+---
+
+# Author
 
 Silias Odion
 
