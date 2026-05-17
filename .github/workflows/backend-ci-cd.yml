@@ -38,7 +38,7 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64 \
-            --tag ${{ secrets.ECR_REPOSITORY }}:latest \
+            -t ${{ secrets.ECR_REPOSITORY }}:latest \
             --push \
             .
 
