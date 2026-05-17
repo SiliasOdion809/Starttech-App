@@ -50,19 +50,19 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin 561876735341.dkr.ecr.eu-west-1.amazonaws.com
-
+            set -e
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY_URL }}
             docker pull ${{ secrets.ECR_REPOSITORY }}:latest
 
             docker stop backend || true
             docker rm backend || true
 
             docker run -d \
-            --name backend \
-            --restart always \
-            --env-file .env \
-            -p 8080:8080 \
-            ${{ secrets.ECR_REPOSITORY }}:latest
+              --name backend \
+              --restart always \
+              --env-file .env \
+              -p 8080:8080 \
+              ${{ secrets.ECR_REPOSITORY }}:latest
 
       - name: Deploy to EC2 Server 2
         uses: appleboy/ssh-action@master
@@ -71,13 +71,13 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin 561876735341.dkr.ecr.eu-west-1.amazonaws.com
-
+            set -e
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY_URL }}
             docker pull ${{ secrets.ECR_REPOSITORY }}:latest
-
+            
             docker stop backend || true
             docker rm backend || true
-
+            
             docker run -d \
               --name backend \
               --restart always \
