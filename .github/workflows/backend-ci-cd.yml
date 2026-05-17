@@ -40,6 +40,7 @@ jobs:
             --platform linux/amd64 \
             -t ${{ secrets.ECR_REPOSITORY }}:latest \
             --push \
+            --load \
             .
 
       - name: Deploy to EC2 Server 1
